@@ -1,0 +1,468 @@
+-GeneralParameters
+ProjectName SimpleMembrane/simple
+SimulationTimeInPs 1000
+TextOutputs PSF XYZ VEL
+BinOutputs N
+CMMotionRemoverStep 0
+FrictionIninvertPs 0.01
+Integrator L
+MCAnisoBarostatFrequency 0
+MCAnisoBarostatPressure 0 0 0
+MCAnisoBarostatScaleXYZ false false false
+MCAnisoBarostatTemperature 310
+MCBarostatFrequency 0
+MCBarostatPressure 0
+MCBarostatTemperature 310
+MCStep 0
+MemFluidity 0
+Minimise false
+MinimiseMaxIterations 0
+MinimiseTolerance 1000
+MinimumForceDecleration false
+PeriodicBoxVector0 1000 0 0
+PeriodicBoxVector1 0 1000 0
+PeriodicBoxVector2 0 0 1000
+Precision single
+ReportEnergy true
+ReportIntervalInFs 10000
+Seed 0
+SimulationBoxLength 0
+StepSizeInFs 100
+TemperatureinKelvin 310
+bondCutoff 0
+setVelocitiesToTemperature true
+#Default values that where used:
+
+-Membrane A
+MeshFile Mesh/Cell_exports/Mem_out.msh
+NodeMass 100
+SpringCoeff 20
+BendingCoeff 200
+Scale 100
+#Default values that where used:
+BendingModel cosine
+CoordinateTranslateVector 0 0 0
+DampingCoeff 0
+ExtForceModel 0
+ExtForceRigidity 0 0 0
+InitRandomRotation false
+LJepsilon kbt
+LJsigma 0
+NUL 0 0 0
+NodeRadius Av
+NominalLengthInNm Av
+SpontaneousTriangleBendingAngleInDegrees 180
+SpringModel H
+SurfaceConstraint N
+SurfaceConstraintCoeff 0
+SurfaceConstraintValue Au
+UpdateBeginTimeInPs 0
+UpdateEndTimeInPs 0
+UpdateRadius -1
+VelocityShiftVector 0 0 0
+WantGeometricProps false
+XYZinMembrane 0 0 0
+XYZscale 1 1 1
+
+-Membrane B
+MeshFile Mesh/Cell_exports/Mem_in.msh
+NodeMass 100
+SpringCoeff 20
+BendingCoeff 200
+Scale 100
+#Default values that where used:
+BendingModel cosine
+CoordinateTranslateVector 0 0 0
+DampingCoeff 0
+ExtForceModel 0
+ExtForceRigidity 0 0 0
+InitRandomRotation false
+LJepsilon kbt
+LJsigma 0
+NUL 0 0 0
+NodeRadius Av
+NominalLengthInNm Av
+SpontaneousTriangleBendingAngleInDegrees 180
+SpringModel H
+SurfaceConstraint N
+SurfaceConstraintCoeff 0
+SurfaceConstraintValue Au
+UpdateBeginTimeInPs 0
+UpdateEndTimeInPs 0
+UpdateRadius -1
+VelocityShiftVector 0 0 0
+WantGeometricProps false
+XYZinMembrane 0 0 0
+XYZscale 1 1 1
+
+-Membrane C :: A
+MeshFile Mesh/Cell_exports/Mem_out.msh
+NodeMass 100
+SpringCoeff 0
+ExtForceModel 1
+ExtForceRigidity 0.5 0.5 0
+BendingCoeff 1
+Scale 5
+CoordinateTranslateVector 0 0 -2700
+BendingModel cosine
+DampingCoeff 0
+InitRandomRotation false
+LJepsilon kbt
+LJsigma 0
+NUL 0 0 0
+NodeRadius Av
+NominalLengthInNm Av
+SpontaneousTriangleBendingAngleInDegrees 180
+SpringModel H
+UpdateBeginTimeInPs 0
+UpdateEndTimeInPs 0
+UpdateRadius -1
+VelocityShiftVector 0 0 0
+#Default values that where used:
+SurfaceConstraint N
+SurfaceConstraintCoeff 0
+SurfaceConstraintValue Au
+WantGeometricProps false
+XYZinMembrane 0 0 0
+XYZscale 1 1 1
+
+-Membrane D :: C
+MeshFile Mesh/Cell_exports/Mem_out.msh
+NodeMass 100
+SpringCoeff 0
+ExtForceModel 1
+ExtForceRigidity 0.5 0.5 0
+BendingCoeff 1
+Scale 5
+BendingModel cosine
+DampingCoeff 0
+InitRandomRotation false
+LJepsilon kbt
+LJsigma 0
+NUL 0 0 0
+NodeRadius Av
+NominalLengthInNm Av
+SpontaneousTriangleBendingAngleInDegrees 180
+SpringModel H
+UpdateBeginTimeInPs 0
+UpdateEndTimeInPs 0
+UpdateRadius -1
+CoordinateTranslateVector -350 0 -2700
+VelocityShiftVector 0 0 0
+#Default values that where used:
+SurfaceConstraint N
+SurfaceConstraintCoeff 0
+SurfaceConstraintValue Au
+WantGeometricProps false
+XYZinMembrane 0 0 0
+XYZscale 1 1 1
+
+-Membrane E :: C
+MeshFile Mesh/Cell_exports/Mem_out.msh
+NodeMass 100
+SpringCoeff 0
+ExtForceModel 1
+ExtForceRigidity 0.5 0.5 0
+BendingCoeff 1
+Scale 5
+BendingModel cosine
+DampingCoeff 0
+InitRandomRotation false
+LJepsilon kbt
+LJsigma 0
+NUL 0 0 0
+NodeRadius Av
+NominalLengthInNm Av
+SpontaneousTriangleBendingAngleInDegrees 180
+SpringModel H
+UpdateBeginTimeInPs 0
+UpdateEndTimeInPs 0
+UpdateRadius -1
+CoordinateTranslateVector 0 350 -2700
+VelocityShiftVector 0 0 0
+#Default values that where used:
+SurfaceConstraint N
+SurfaceConstraintCoeff 0
+SurfaceConstraintValue Au
+WantGeometricProps false
+XYZinMembrane 0 0 0
+XYZscale 1 1 1
+
+-Membrane F :: C
+MeshFile Mesh/Cell_exports/Mem_out.msh
+NodeMass 100
+SpringCoeff 0
+ExtForceModel 1
+ExtForceRigidity 0.5 0.5 0
+BendingCoeff 1
+Scale 5
+BendingModel cosine
+DampingCoeff 0
+InitRandomRotation false
+LJepsilon kbt
+LJsigma 0
+NUL 0 0 0
+NodeRadius Av
+NominalLengthInNm Av
+SpontaneousTriangleBendingAngleInDegrees 180
+SpringModel H
+UpdateBeginTimeInPs 0
+UpdateEndTimeInPs 0
+UpdateRadius -1
+CoordinateTranslateVector 350 0 -2700
+VelocityShiftVector 0 0 0
+#Default values that where used:
+SurfaceConstraint N
+SurfaceConstraintCoeff 0
+SurfaceConstraintValue Au
+WantGeometricProps false
+XYZinMembrane 0 0 0
+XYZscale 1 1 1
+
+-Membrane G :: C
+MeshFile Mesh/Cell_exports/Mem_out.msh
+NodeMass 100
+SpringCoeff 0
+ExtForceModel 1
+ExtForceRigidity 0.5 0.5 0
+BendingCoeff 1
+Scale 5
+BendingModel cosine
+DampingCoeff 0
+InitRandomRotation false
+LJepsilon kbt
+LJsigma 0
+NUL 0 0 0
+NodeRadius Av
+NominalLengthInNm Av
+SpontaneousTriangleBendingAngleInDegrees 180
+SpringModel H
+UpdateBeginTimeInPs 0
+UpdateEndTimeInPs 0
+UpdateRadius -1
+CoordinateTranslateVector 0 -350 -2700
+VelocityShiftVector 0 0 0
+#Default values that where used:
+SurfaceConstraint N
+SurfaceConstraintCoeff 0
+SurfaceConstraintValue Au
+WantGeometricProps false
+XYZinMembrane 0 0 0
+XYZscale 1 1 1
+
+-Membrane H :: C
+MeshFile Mesh/Cell_exports/Mem_out.msh
+NodeMass 100
+SpringCoeff 0
+ExtForceModel 1
+ExtForceRigidity 0.5 0.5 0
+BendingCoeff 1
+Scale 5
+BendingModel cosine
+DampingCoeff 0
+InitRandomRotation false
+LJepsilon kbt
+LJsigma 0
+NUL 0 0 0
+NodeRadius Av
+NominalLengthInNm Av
+SpontaneousTriangleBendingAngleInDegrees 180
+SpringModel H
+UpdateBeginTimeInPs 0
+UpdateEndTimeInPs 0
+UpdateRadius -1
+CoordinateTranslateVector -350 350 -2700
+VelocityShiftVector 0 0 0
+#Default values that where used:
+SurfaceConstraint N
+SurfaceConstraintCoeff 0
+SurfaceConstraintValue Au
+WantGeometricProps false
+XYZinMembrane 0 0 0
+XYZscale 1 1 1
+
+-Membrane I :: C
+MeshFile Mesh/Cell_exports/Mem_out.msh
+NodeMass 100
+SpringCoeff 0
+ExtForceModel 1
+ExtForceRigidity 0.5 0.5 0
+BendingCoeff 1
+Scale 5
+BendingModel cosine
+DampingCoeff 0
+InitRandomRotation false
+LJepsilon kbt
+LJsigma 0
+NUL 0 0 0
+NodeRadius Av
+NominalLengthInNm Av
+SpontaneousTriangleBendingAngleInDegrees 180
+SpringModel H
+UpdateBeginTimeInPs 0
+UpdateEndTimeInPs 0
+UpdateRadius -1
+CoordinateTranslateVector 350 -350 -2700
+VelocityShiftVector 0 0 0
+#Default values that where used:
+SurfaceConstraint N
+SurfaceConstraintCoeff 0
+SurfaceConstraintValue Au
+WantGeometricProps false
+XYZinMembrane 0 0 0
+XYZscale 1 1 1
+
+-Membrane J :: C
+MeshFile Mesh/Cell_exports/Mem_out.msh
+NodeMass 100
+SpringCoeff 0
+BendingCoeff 1
+Scale 5
+BendingModel cosine
+DampingCoeff 0
+InitRandomRotation false
+LJepsilon kbt
+LJsigma 0
+NUL 0 0 0
+NodeRadius Av
+NominalLengthInNm Av
+SpontaneousTriangleBendingAngleInDegrees 180
+SpringModel H
+UpdateBeginTimeInPs 0
+UpdateEndTimeInPs 0
+UpdateRadius -1
+ExtForceModel 1
+CoordinateTranslateVector -1700 0 2000
+ExtForceRigidity 0 0 -1
+VelocityShiftVector 0 0 0
+#Default values that where used:
+SurfaceConstraint N
+SurfaceConstraintCoeff 0
+SurfaceConstraintValue Au
+WantGeometricProps false
+XYZinMembrane 0 0 0
+XYZscale 1 1 1
+
+-Membrane K :: C
+MeshFile Mesh/Cell_exports/Mem_out.msh
+NodeMass 100
+SpringCoeff 0
+BendingCoeff 0
+Scale 5
+BendingModel cosine
+DampingCoeff 0
+InitRandomRotation false
+LJepsilon kbt
+LJsigma 0
+NUL 0 0 0
+NodeRadius Av
+NominalLengthInNm Av
+SpontaneousTriangleBendingAngleInDegrees 180
+SpringModel H
+UpdateBeginTimeInPs 0
+UpdateEndTimeInPs 0
+UpdateRadius -1
+ExtForceModel 1
+CoordinateTranslateVector -1700 350 2000
+ExtForceRigidity 0 0 -1
+VelocityShiftVector 0 0 0
+#Default values that where used:
+SurfaceConstraint N
+SurfaceConstraintCoeff 0
+SurfaceConstraintValue Au
+WantGeometricProps false
+XYZinMembrane 0 0 0
+XYZscale 1 1 1
+
+-Membrane L :: C
+MeshFile Mesh/Cell_exports/Mem_out.msh
+NodeMass 100
+SpringCoeff 0
+BendingCoeff 0
+Scale 5
+BendingModel cosine
+DampingCoeff 0
+InitRandomRotation false
+LJepsilon kbt
+LJsigma 0
+NUL 0 0 0
+NodeRadius Av
+NominalLengthInNm Av
+SpontaneousTriangleBendingAngleInDegrees 180
+SpringModel H
+UpdateBeginTimeInPs 0
+UpdateEndTimeInPs 0
+UpdateRadius -1
+ExtForceModel 1
+CoordinateTranslateVector -1700 -350 2000
+ExtForceRigidity 0 0 -1
+VelocityShiftVector 0 0 0
+#Default values that where used:
+SurfaceConstraint N
+SurfaceConstraintCoeff 0
+SurfaceConstraintValue Au
+WantGeometricProps false
+XYZinMembrane 0 0 0
+XYZscale 1 1 1
+
+
+-Actin
+MeshFile Mesh/Cell_exports/Actin_between.msh
+Scale 100
+DashpotViscosity 1
+MeshType normal
+NodeMass 100
+NodeRadius Av
+SpringCoeff 20
+KelvinDampingCoeff 0
+NominalLengthInNm Au
+Contractile_force 0
+Contractile_hill_co 0
+Contractile_k1 0
+Contractile_k2 0
+Contractile_model Constant
+Contractile_rmax_factor 100
+Contractile_rmin_factor 0
+CoordinateTranslateVector 0 0 0
+ExtForceModel 0
+ExtForceRigidity 0 0 0
+MT_SpringCoeff 0
+MT_SpringModel H
+MT_force 0
+MT_hill_co 0
+MT_k1 0
+MT_k2 0
+MT_model Constant
+MT_r0factor 1
+MT_rmax_factor 100
+MT_rmin_factor 0
+SpringModel H
+VelocityShiftVector 0 0 0
+abp_SpringCoeff 0
+abp_SpringModel H
+abp_force 0
+abp_hill_co 0
+abp_k1 0
+abp_k2 0
+abp_model Constant
+abp_r0factor 1
+abp_rmax_factor 100
+abp_rmin_factor 0
+actin_r0factor 1
+#Default values that where used:
+
+
+-InteractionTable
+MA  EV   
+MB  LJ 0
+MC  LJ LJ   0
+MD  LJ LJ   0  0
+ME  LJ LJ   0  0  0
+MF  LJ LJ   0  0  0  0 
+MG  LJ LJ   0  0  0  0  0
+MH  LJ LJ   0  0  0  0  0  0
+MI  LJ LJ   0  0  0  0  0  0  0
+MJ  WCA LJ  0  0  0  0  0  0  0  0
+MK  WCA LJ  0  0  0  0  0  0  0  0  0
+ML  WCA LJ  0  0  0  0  0  0  0  0  0  0
+A0  0   0  EV EV EV EV EV EV  EV EV EV EV 0

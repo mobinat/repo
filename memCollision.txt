@@ -1,0 +1,23 @@
+-GeneralParameters
+
+ProjectName memCollision/2mems
+SimulationTimeInPs 400
+
+-Membrane A
+MeshFile Mesh/icospheres/10_1002n.ply
+SpringCoeff 1
+BendingCoeff 50
+Scale 100
+VelocityShiftVector 1 0 0 
+
+-Membrane B :: A
+Scale 70
+VelocityShiftVector -1 0 0 
+
+
+
+-InteractionTable
+
+
+MA  0         
+MB  WCA 0

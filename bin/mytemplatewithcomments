@@ -1,0 +1,358 @@
+#This is the VCM configuration template.
+#Whatever following "#" will be ignored by the programme.
+#You may use a "word", number, or character to label class instances. Note that this lable will only be used by the programme within the configuration file enviroment to distiguish between classes.  If no label is provided, the programme will automatically assign a number label beginning from 0.
+
+-GeneralParameters
+
+#Set the Project Directory. Outputfile format: Results/ProjectName/Date_time_instanceId/Date_time_instanceId.extension
+ProjectName VCProject
+
+#Simulation time length masured in pico seconds. Default value 10.
+SimulationTimeInPs 10
+
+#Integration step size measured in femto seconds.  Default value 10.
+StepSizeInFs 10
+
+#Trajectory saving, data collection, etc wil be performed at the ReportIntervalInFs time intervales measured in femto seconds.
+ It can also be set to record data at exponential time intervals by specifying 'EXP Step' followed by the number of samples you want to save. Example: ReportIntervalInFs EXP Step 200, the simulation outputs will be recorded every t = int(exp(m*delta)), where t is an integer and the maximum value is T=SimulationTimeInPs*1000/StepSizeInFs, m is an integer multiplier, and delta=log(T)/N. Note log(T) is the natural logarithm and N is the number of report intervals requested (here 200). 
+Also you can just set an exponent for the exponential data sampling. Example ReportIntervalInFs EXP 0.98, the simulation outputs will be recorded every t = exp(m*delta), where t is an integer and the maximum value is T=SimulationTimeInPs*1000/StepSizeInFs, m is an integer multiplier. Note log(T) is the natural logarithm. Default value 1000
+ReportIntervalInFs 1000
+
+#Simulation enviroment size (cube). Default value 0.
+SimulationBoxLength 0
+
+#Set the integrator type. Default value 'V'.
+#	V: Verlet. 
+#	B: Brownian. *needs: FrictionIninvertPs and Temperature
+#	L: Langevin. *needs: FrictionIninvertPs and Temperature
+#	GJF: The GJF thermostat based on "A simple and effective Verlet-type algorithm for simulating Langevin dynamics" by Niels Grønbech-Jensen  & Oded Farago Published online: 14 Feb 2013 DOI:10.1080/00268976.2012.760055  *needs: FrictionIninvertPs and Temperature
+#	GJF20: Use: GJF20 A (or B, C) An update to the GJF thermostat based on "Defining velocities for accurate kinetic statistics in the GJF thermostat" by Niels Grønbech-Jensen and Oded Farago DOI: 10.1103/PhysRevE.101.022123 *needs: FrictionIninvertPs and Temperature
+#	Global: Bussi et al global thermostat DOI: http://dx.doi.org/10.1016/j.cpc.2008.01.006 *needs: FrictionIninvertPs and Temperature
+
+Integrator V
+
+#The friction coefficient which couples the system to the heat bath (in inverse pico seconds). Required by the Brownian and Langevin integrators. Default value 5.
+FrictionIninvertPs 5
+
+#The thermostat temperature (in Kelvin). Required by the Brownian and Langevin integrators. Default value 310
+TemperatureinKelvin 310
+
+#Set all particle velocities to random values taken from a Boltzmann distribution at a given temperature. Default value false
+setVelocitiesToTemperature false
+
+#OpenMM Documentation: "Set the random number seed. The precise meaning of this parameter is undefined, and is left up to each Platform to interpret in an appropriate way. It is guaranteed that if two simulations are run with different random number seeds, the sequence of random forces will be different. On the other hand, no guarantees are made about the behavior of simulations that use the same seed. In particular, Platforms are permitted to use non-deterministic algorithms which produce different results on successive runs, even if those runs were initialized identically.". Default value 0
+Seed 0
+
+#Use 'true' or 'false' to specify th use of OpenMM's Minimize function. It searches for a new set of particle positions that represent a local minimum of the potential energy. The search is performed using the L-BFGS algorithm. Distance constraints are enforced during minimization by adding a harmonic restraining force to the potential function. Default false
+Minimise false
+
+#This specifies how precisely the energy minimum must be located. Minimization will be halted once the root-mean-square value of all force components reaches this tolerance. The default value is 10.
+MinimiseTolerance 10
+
+The maximum number of iterations to perform. If this is 0, minisation is continued until the results converge without regard to how many iterations it takes. The default value is 0.
+MinimiseMaxIterations 0
+
+#The pressure acting on the system (in bar) through OpenMM's MonteCarloBarostat. Default 0
+MCBarostatPressure 0
+
+#The temperature at which OpenMM's MonteCarloBarostat will think the system is being maintained (in Kelvin). Default thermostat's Temperature
+MCBarostatTemperature 0
+
+#The frequency at which the MonteCarloBarostat pressure changes should be attempted (in time steps). If zero MCBarostat will be disabled. Default 0
+MCBarostatFrequency 0
+
+#The pressure acting on each axis (in bar) through OpenMM's MonteCarloAnisotropicBarostat. Default 0 0 0
+MCAnisoBarostatPressure 0 0 0
+
+#The temperature at which OpenMM's MonteCarloAnisotropicBarostat will think the system is being maintained (in Kelvin). Default thermostat's Temperature
+MCAnisoBarostatTemperature 0
+
+#Allow (or not allow) the X,Y, or Z dimension of the periodic box to change size through OpenMM's MonteCarloAnisotropicBarostat. Default fasle false false
+MCAnisoBarostatScaleXYZ false false false
+
+#The frequency at which the MonteCarloAnisotropicBarostat pressure changes should be attempted (in time steps). If zero MCAnisoBarostat will be disabled. Default 0
+MCAnisoBarostatFrequency 0
+
+#The number of steps that the centre of mass velocity is set to zero using OpenMM's CMMotionRemover. Default 0
+CMMotionRemoverStep 0
+
+#Collect energy parameters for the potentials (expensive) during each Report_Interval_In_Fs time point. Default true
+ReportEnergy true
+
+#Periodic box vector (1 of 3). Default value (1000, 0, 0).
+PeriodicBoxVector0 1000 0 0
+
+#Periodic box vector (2 of 3). Default value (0, 1000, 0).
+PeriodicBoxVector1 0 1000 0
+
+#Periodic box vector (3 of 3). Default value (0, 0, 1000).
+PeriodicBoxVector2 0 0 1000
+
+#This option is not available. Note to the developer: This should be moved to the Membrane. Default value 100.
+MCStep 0
+
+#This option is not available. Note to the developer: This should be moved to the Membrane. Default value 100.
+MemFluidity 0
+
+#When true, sll interaction potentails will be declared using the minimum number of 'Forces'. This will result in better performance for large systems. If false, multiple force groups will be defined for each class. This will come in handy when wanting to look at the evolution of selected forces on a class.
+MinimumForceDecleration false
+
+#Simulation outputs (text format): You can add as many output formats as you wish. PSF: psf connectivity file, XYZ: xyz file, PDB: pdb file, VEL: xyz file style for velocities, FORCE: xyz file style for forces, N: no text output. Default: PSF XYZ 
+TextOutputs PSF XYZ
+
+#Simulation outputs (binary format): You can add as many output formats as you wish. XYZ: xyz coordinats, VEL: xyz components of velocities, TPK: time, potential energy, and kinetic energy, N: No binary output. Default: N 
+BinOutputs N
+
+#Set the precision of the calculations. If the precision is not supported by the platform the default precision of the platform will be used. Default: N 
+Precision single
+
+
+-Membrane
+
+#Path to the mesh file. Supported formats: Blender's ply and Gmsh 2. The Membrane class cannot be initilised without a mesh file.
+MeshFile Path/to/my/meshfile.extension
+
+#Mass asssigned to each node. Default value 1.
+NodeMass 1
+
+#Radius assigned to each node. If Av, half of the average bond distance of nodes will be used. If Au, half of the average of bonds connected to each node in the initial mesh will be used. If a value is inputed, the value will be used. The node radius is used to calculate the cutt-off and minimum energy distance for the 'Excluded Volume' and the 'Lennard-Jones' potential. If the Memebrane is interacting with another class (Lets call it ClassA), the Sigma between them will be calculated as the average of the class's sigmas: Sigma {Membrane & ClassA} = 0.5(sigma{Membrane}+Sigma{ClassA})
+NodeRadius Av
+
+#X, Y, Z components of a vector used to translate all coordinates of the Mesh befor beginning the simluation.
+CoordinateTranslateVector 0 0 0
+
+#Vx, Vy, Vz components of a vector used to add to all initial node velocities befor beginning the simluation.
+VelocityShiftVector 0 0 0
+
+#Set the bond potential. 'H' for harmonic. 'FENE' for a finitely extensible nonlinear elastic model. 'N' for no potential. Default H
+SpringModel H
+
+#Set the bond potential rigidity coefficient in KJ.mol^-1.Nm^-3. Default value 0.
+SpringCoeff 0
+
+#Set the damping coefficient for non harmonic potentials. Default value 0.
+DampingCoeff 0
+
+#Set the dihedral potential (cosine dihedral angle). Default cosine
+BendingModel cosine
+
+#Set bending potential (harmonic dihedral) rigidity coefficient. Default 0
+BendingCoeff 0
+
+#Set the rest length of the mesh springs using: 1) Au: The initial bond lengths of the mesh; 2) Av: The average node pair lengths; 3) "value": Where you type a specific  value.
+NominalLengthInNm Av
+
+#Set the nominal angle (in degrees) of the mesh triangle pair potential using: 1) Au: The initial angles  of the mesh triangles; 2) Av: The average triangle pair angles; 3) "value": Where you type a specific  value.
+SpontaneousTriangleBendingAngleInDegrees 180
+
+#Used to scale the Membrane coordinates. Default 1
+Scale 1
+
+#Used to scale the Mesh in the X, Y, znd Z direction.
+XYZscale 1 1 1
+
+#begin the simulation with a random orientation. Default value false
+InitRandomRotation false
+
+#Write geometrical characteristics of the Membrane. It includes The Membrane volume, surface area, voronoi area of each node, normal vector of each node at the savinig time step. Default value false
+WantGeometricProps false
+
+#X, Y, Z coordinates of a point inside the Membrane (usually the geometrical centre) used to build normal vectors on the trianular mesh that point to the outside of the Membrane. This proccess is only performed once when the Membrane is imported from the mesh file.
+XYZinMembrane 0 0 0
+
+#Set the Lennard Jones 12-6 sigma. Default value is the radius of the Membrane node. If the Memebrane is interacting with another class, the Sigma between them will be calculated as the sum of the class's sigmas: Sigma {Membrane & A} = (sigma{Membrane}+Sigma{A})
+LJsigma 0
+
+#Set the Lennard Jones 12-6 epsillon. Default value kbt. If the Memebrane is interacting with another class, the Epsillon between them will be calculated as the geometrical average of the class's epsilons: Epsillon {Membrane & A} = sqrt(epsillon{Membrane}*+epsillon{A}).
+LJepsilon kbt
+
+#Under development. Do not use this flag.
+ExtForceModel 0
+
+#Under development. Do not use this flag.
+ExtForceRigidity 0 0 0
+
+#Set if you want to change (linear) the Radius of the Membrane to change to a new value during the simulation. Default value is negative, indicating no change.
+UpdateRadius -1
+
+#The Membrane radius will begin changing to the user provided value at this time point during the simulation (measured in pico seconds).
+UpdateBeginTimeInPs 0
+
+#The Membrane radius will finish updating at this time point during the simulation (measured in pico seconds).
+UpdateEndTimeInPs 0
+
+#NUL: The number (N), amplitude (U), maximum value of the modes (L) of randomly generated real spherical harmonic modes add to the existing Memebrane mesh. Example: 4 0.01 20, That generates 4 random modes that may go up to 20, with amplitude 0.01.
+NUL 0 0 0
+
+
+-Actin
+
+#Path to the mesh file. Supported formats: Blender's ply, actin format .actin, and Gmsh 2. The Membrane class cannot be initilised without a mesh file.
+MeshFile Path/to/my/meshfile.extension
+
+#Mesh type defined by Sajjad takes options 'normal' and 'sajjad'.  default value normal
+MeshType normal
+
+#Mass asssigned to each node. Default value 1
+NodeMass 1
+
+#Radius assigned to each node. Legal Values 1) Av, half of the average bond distance of nodes or 2) "a value". The node radius is used to calculate the cutt-off and minimum energy distance for the 'Excluded Volume' and the 'Lennard-Jones' potential.
+NodeRadius Av
+
+#Set the bond potential. 'H' for harmonic. 'FENE' for a finitely extensible nonlinear elastic model. 'kelvin' for the Kelvin-Voigt potential. 'N' for no potential. Default H
+SpringModel H
+
+#Set the bond potential rigidity coefficient. Default value 0.
+SpringCoeff 0
+
+#Set the Kelvin Damping Coefficient. Default value 0.
+KelvinDampingCoeff 0
+
+#Set the Dashpot Viscosity. Default value 0.
+DashpotViscosity 0
+
+#Set the rest length of the mesh springs using: 1) Au: The initial bond lengths of the mesh; 2) Av: The average node pair lengths; 3) "value": Where you type a specific  value.
+NominalLengthInNm Au
+
+#Used to scale the Membrane coordinates. Default 1
+Scale 1
+
+#X, Y, Z components of a vector used to translate all coordinates of the Mesh befor beginning the simluation.
+CoordinateTranslateVector 0 0 0
+
+#Vx, Vy, Vz components of a vector used to add to all initial node velocities befor beginning the simluation.
+VelocityShiftVector 0 0 0
+
+
+-ECM
+
+#This is a parameter example for ECM with default value 'value 0'.
+ECMSampleParam0 value 0
+
+#This is a parameter example for ECM with default value 'value 1'.
+ECMSampleParam1 value 1
+
+
+-Chromatin
+
+#Path to a text file from which the X, Y, Z, Vx, Vy, and Vz of the chromatin nodes can be imported. If you wish to import only a specific number of lines (coordinates) you may specify an intger after the path. Example:  path/to/my/coordinates.txt 20
+ImportCoordinates path/to/my/coordinates.txt
+
+#Number of Chromatin nodes on a generated self avoiding random chain . If you are importing coordinates, this parameter will be ignored. Default 10
+GenerateRandomChain    0
+
+#The radius of the sphere the generated coordinates are restricted in. The node radius is taken into account when generating coordinates with this restriction Default N for no restrictions.
+RestrictGeneratedChainRadius N
+
+#If "true" The programme will generate a self avoiding random chain with respect to the node radius. Default false
+GenerateSelfAvoidingChain false
+
+#If "true" The programme will write the generated coordinates that can be imported later. Default false
+ExportGeneratedCoordinates false
+
+#Number of node types on the chain. For more than one node type, multiple LJsigma and LJepsillon can be defined to customise long range interactions. Default 10
+NodeTypes 1
+
+#Set the Lennard Jones 12-6 sigma. Default value is the radius of the Chromatin node. If the Chromatin is interacting with another class, the Sigma between them will be calculated as the sum of the class's sigmas: Sigma {Chromatin & A} = (sigma{Chromatin}+Sigma{A})
+LJsigma 0
+
+#Set the Lennard Jones 12-6 epsillon. Default value kbt. If the Chromatin is interacting with another class, the Epsillon between them will be calculated as the geometrical average of the class's epsilons: Epsillon {Chromatin & A} = sqrt(epsillon{Chromatin}*+epsillon{A}).
+LJepsilon kbt
+
+#Mass asssigned to each node. Default value 1
+NodeMass 1
+
+#Radius assigned to each node. Legal Values 1) Av, half of the average bond distance of nodes or 2) "a value". The node radius is used to calculate the cutt-off and minimum energy distance for the 'Excluded Volume' and the 'Lennard-Jones' potential.
+NodeRadius Av
+
+#Set the bond potential. 'H' for Harmonic, 'FENE' for a finitely extensible nonlinear elastic model, 'KG' for Kremer-Grest model. 'N' for None. Default H.
+SpringModel H
+
+#Set the bond potential rigidity coefficient to zero for every other bond. Default false.
+zebraBonds false
+
+#Set the bond potential rigidity coefficient. Default value 2000.
+SpringCoeff 2000
+
+#Set the rest length of the springs using: 1) Au: The initial bond lengths at time 0; 2) Av: The average bond lengths at time 0; 3) "value": Where you type a specific  value.
+#Note: When using the GenerateRandomChain option, the only the value input option can be used for the NominalLengthInNm.
+NominalLengthInNm Au
+
+#Set the damping coefficient for non harmonic potentials. Default value 0.
+DampingCoeff 0
+
+#Set the angle-bond potential. 'cos' for cosine potential defined as k(1+cos(theta)). 'N' for None. Default N.
+AngleSpringModel N
+
+#Set the angle-bond potential rigidity coefficient. Default value 2000.
+AngleSpringCoeff 2000
+
+#Set the angle-bond potential spontaneous bending angle in degrees. Default value 180.
+SpontaneousBendingAngleInDeg 180
+
+#X, Y, Z components of a vector used to translate all coordinates befor beginning the simluation.
+CoordinateTranslateVector 0 0 0
+
+#Vx, Vy, Vz components of a vector used to add to all initial node velocities befor beginning the simluation.
+VelocityShiftVector 0 0 0
+
+#Used to scale the Chromatin coordinates. Default 1
+Scale 1
+
+#If the chromatin node radius is smaller than the node distances along the chain, The VirtualBondLength (the chain bond length) will be used to put virtual chromatin nodes between the real nodes to mimic a cylinder. Default 0
+VirtualBondLength 0
+
+#If the VirtualBondLength is set, the VirtualBondRadius will be used to defing the radius of the virtual chromatin nodes. Default 0
+VirtualBondRadius 0
+
+#If "true" The programme will find the best VirtualBondRadius that fits the parameters (NodeRadius and VirtualBondLength). Default 0
+OptimiseBondRadius false
+
+
+-InteractionTable
+
+#Define the non-bonded interaction between the Classes. The classes in the table should be written in the following order: Membranes (M0, M1, ...), Actins (A0, A1, ...), ECMs (E0, E1, ...), Chromatins (C0, C1, ...)
+#Non-bonded interactions:
+#0:  No interaction.
+#LJ: Lennard Jones 12-6.
+#WCA: Weeks-Chandler-Andersen potential.
+#WCAFC: Weeks-Chandler-Andersen potential with a maximum force cap. It can be used to minimise/relax configurations.
+#Example of an interaction map with one of each calss.
+    M0 A0 E0 C0
+M0  WCA         
+A0  0  0       
+E0  0  LJ  0    
+C0  WCA  0  LJ  0
+
+#Example of an interaction map with multiple calsses.
+#    M0 M1 A0 A1 E0 C0  C1  C2  C3
+#M0  WCA         
+#M1  WCA WCA        
+#A0  0   0   0     
+#A1  0   0   0  0   
+#E0  0   LJ  0  0  0
+#C0  WCA WCA 0  0  0  WCA
+#C1  WCA WCA 0  0  0  WCA  WCA
+#C2  WCA WCA 0  0  0  WCA  WCA  WCA
+#C3  WCA WCA 0  0  0  WCA  WCA  WCA  WCA
+#Where:
+#WCA interaction is set between all Chromatins and Membrane calsses. Also, the interaction is set for each class memeber, that is the Chromatin or Membrane nodes cannot cross themselves.
+#The ECM is set to have Lennard jones interaction with Membrane 1.
+#All other classes have no non-bonded interactions.
+
+
+#Note: If you have multiple instances of one class that have almost the same configurations but differ in just a couple, you can use the inheritance feature. The inheritance feature allows you to copy configurations from one class and add/overwiwte new configrations. Inheritance can only be applied to classes of the same kind:
+#Example:
+#-Membrane A
+#config1 10
+#config2 true
+#config3 200
+#-Membrane B :: A
+#config2 false
+#The programme will copy the configurations of Membrane A to Membrane B and add/overwrite the configurations that are listed in Membrane B.
+#The programme will interpret Membrane B as follows:
+#-Membrane B
+#config1 10
+#config2 false
+#config3 200
+

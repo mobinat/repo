@@ -1,0 +1,117 @@
+-GeneralParameters
+
+ProjectName VCProject
+SimulationTimeInPs 10
+StepSizeInFs 10
+ReportIntervalInFs 1000
+SimulationBoxLength 0
+Integrator V
+FrictionIninvertPs 5
+TemperatureinKelvin 310
+setVelocitiesToTemperature false
+Seed 0
+Minimise false
+MinimiseTolerance 10
+MinimiseMaxIterations 0
+MCBarostatPressure 0
+MCBarostatTemperature 0
+MCBarostatFrequency 0
+MCAnisoBarostatPressure 0 0 0
+MCAnisoBarostatTemperature 0
+MCAnisoBarostatScaleXYZ false false false
+MCAnisoBarostatFrequency 0
+CMMotionRemoverStep 0
+ReportEnergy true
+PeriodicBoxVector0 1000 0 0
+PeriodicBoxVector1 0 1000 0
+PeriodicBoxVector2 0 0 1000
+MCStep 0
+MemFluidity 0
+MinimumForceDecleration false
+TextOutputs PSF XYZ
+BinOutputs N
+Precision single
+
+-Membrane
+
+MeshFile Path/to/my/meshfile.extension
+NodeMass 1
+NodeRadius Av
+CoordinateTranslateVector 0 0 0
+VelocityShiftVector 0 0 0
+SpringModel H
+SpringCoeff 0
+DampingCoeff 0
+BendingModel cosine
+BendingCoeff 0
+NominalLengthInNm Av
+SpontaneousTriangleBendingAngleInDegrees 180
+Scale 1
+XYZscale 1 1 1
+InitRandomRotation false
+WantGeometricProps false
+XYZinMembrane 0 0 0
+LJsigma 0
+LJepsilon kbt
+ExtForceModel 0
+ExtForceRigidity 0 0 0
+UpdateRadius -1
+UpdateBeginTimeInPs 0
+UpdateEndTimeInPs 0
+NUL 0 0 0
+
+-Actin
+
+MeshFile Path/to/my/meshfile.extension
+MeshType normal
+NodeMass 1
+NodeRadius Av
+SpringModel H
+SpringCoeff 0
+KelvinDampingCoeff 0
+DashpotViscosity 0
+NominalLengthInNm Au
+Scale 1
+CoordinateTranslateVector 0 0 0
+VelocityShiftVector 0 0 0
+
+-ECM
+
+ECMSampleParam0 value 0
+ECMSampleParam1 value 1
+
+-Chromatin
+
+ImportCoordinates path/to/my/coordinates.txt
+GenerateRandomChain 0
+RestrictGeneratedChainRadius N
+GenerateSelfAvoidingChain false
+ExportGeneratedCoordinates false
+NodeTypes 1
+LJsigma 0
+LJepsilon kbt
+NodeMass 1
+NodeRadius Av
+SpringModel H
+zebraBonds false
+SpringCoeff 2000
+NominalLengthInNm Au
+DampingCoeff 0
+AngleSpringModel N
+AngleSpringCoeff 2000
+SpontaneousBendingAngleInDeg 180
+CoordinateTranslateVector 0 0 0
+VelocityShiftVector 0 0 0
+Scale 1
+VirtualBondLength 0
+VirtualBondRadius 0
+OptimiseBondRadius false
+
+-InteractionTable
+
+    M0 A0 E0 C0
+M0  WCA         
+A0  0  0       
+E0  0  LJ  0    
+C0  WCA  0  LJ  0
+
